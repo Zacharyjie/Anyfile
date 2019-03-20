@@ -1,0 +1,14 @@
+[Unit]
+Description=Zabbix Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/loacl/zabbix/sbin/zabbix_server
+PIDFile=/tmp/zabbix_server.pid
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

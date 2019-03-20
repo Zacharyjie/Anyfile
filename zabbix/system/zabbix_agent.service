@@ -1,0 +1,14 @@
+[Unit]
+Description=Zabbix Agentd
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/loacl/zabbix/sbin/zabbix_agentd
+PIDFile=/tmp/zabbix_agentd.pid
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
