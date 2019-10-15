@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:12.3.0-ce.0
+    ports:
+      - "2222:22"
+      - "80:80"
+      - "4443:443"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    hostname: 'gitlab-ce'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://YOUR_IP'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+        unicorn['worker_processes'] = 8
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"] 
+    volumes:
+      - $PWD/config:/etc/gitlab
+      - $PWD/logs:/var/log/gitlab
+      - $PWD/data:/var/opt/gitlab
+      - /etc/localtime:/etc/localtime:ro
+    container_name: gitlab-ce

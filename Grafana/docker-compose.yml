@@ -14,7 +14,7 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"] 
     environment:
-      - GF_SERVER_ROOT_URL=http://0.0.0.0:3000
+      - GF_SERVER_ROOT_URL=http://Your_ip:3000
       - GF_SECURITY_ADMIN_PASSWORD=finchina
       - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app,grafana-clock-panel
     volumes:
