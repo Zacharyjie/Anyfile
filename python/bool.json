@@ -1,0 +1,20 @@
+{
+  "query": {
+      "bool": {
+          "must": [
+              {"match_phrase": {"consumer.username": "*"}},
+              {"match_phrase": {"response.status": "*"}}
+          ],
+          "must_not": [
+          ],
+          "should": [
+              {
+                  "match_all": {}
+              }
+          ],
+          "filter": []
+          }
+      },
+      "from": 0,
+      "size": "8000"
+}
