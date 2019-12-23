@@ -19,14 +19,14 @@ def baojin():
         if chat is None or mess is None:
             return "None"
         else:
-            send_url = 'http://114.80.245.202/QywxInterface/SendChatHandler.ashx'
+            send_url = 'http://ip/QywxInterface/SendChatHandler.ashx'
             send_values = {
                 "receiver":
                 {
                     "type": "group",
                     "id": chat
                 },
-                "sender": "ywbz.list@finchina.com",
+                "sender": "mailname",
                 "msgtype": "text",
                 "text":
                 {
